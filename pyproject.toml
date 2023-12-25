@@ -10,7 +10,6 @@ python = "^3.10"
 darts = "^0.27.1"
 
 [tool.poetry.group.dev.dependencies]
-dvc = "^3.36.1"
 ipykernel = "^6.27.1"
 
 [build-system]
