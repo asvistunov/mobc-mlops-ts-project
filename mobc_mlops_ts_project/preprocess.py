@@ -3,6 +3,7 @@ from pathlib import Path
 import hydra
 import numpy as np
 import pandas as pd
+from dvc.repo import Repo
 from omegaconf import DictConfig, OmegaConf
 
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -68,4 +69,5 @@ def main(cfg: DictConfig):
 
 
 if __name__ == "__main__":
+    Repo(PROJECT_ROOT).pull()
     main()
