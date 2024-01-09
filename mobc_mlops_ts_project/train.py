@@ -17,17 +17,13 @@ DATA_PATH = PROJECT_ROOT / "data"
 CONF_PATH = PROJECT_ROOT / "conf"
 
 
-@hydra.main(
-    version_base=None, config_path=str(CONF_PATH), config_name="modeling"
-)
+@hydra.main(version_base=None, config_path=str(CONF_PATH), config_name="modeling")
 def main(cfg: DictConfig):
 
     mlflow.set_tracking_uri(uri=f"http://{cfg.mlflow.host}:{cfg.mlflow.port}")
     mlflow.set_experiment(cfg.mlflow.experiment_name)
 
-    sales = pd.read_csv(
-        DATA_PATH / "processed" / "train.csv", parse_dates=["date"]
-    )
+    sales = pd.read_csv(DATA_PATH / "processed" / "train.csv", parse_dates=["date"])
 
     sales_ts = TimeSeries.from_group_dataframe(
         sales,

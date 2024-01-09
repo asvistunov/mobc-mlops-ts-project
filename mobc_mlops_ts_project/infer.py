@@ -12,13 +12,9 @@ DATA_PATH = PROJECT_ROOT / "data"
 CONF_PATH = PROJECT_ROOT / "conf"
 
 
-@hydra.main(
-    version_base=None, config_path=str(CONF_PATH), config_name="modeling"
-)
+@hydra.main(version_base=None, config_path=str(CONF_PATH), config_name="modeling")
 def main(cfg: DictConfig):
-    sales = pd.read_csv(
-        DATA_PATH / "processed" / "train.csv", parse_dates=["date"]
-    )
+    sales = pd.read_csv(DATA_PATH / "processed" / "train.csv", parse_dates=["date"])
 
     sales_ts = TimeSeries.from_group_dataframe(
         sales,
@@ -41,11 +37,7 @@ def main(cfg: DictConfig):
 
         sales_forecast.append(forecast_tmp)
 
-    (
-        pd.concat(sales_forecast).to_csv(
-            DATA_PATH / cfg.inference.output_file, index=False
-        )
-    )
+    (pd.concat(sales_forecast).to_csv(DATA_PATH / cfg.inference.output_file, index=False))
 
 
 if __name__ == "__main__":
