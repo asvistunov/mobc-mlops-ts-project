@@ -1,0 +1,26 @@
+mlflow:
+    host: 127.0.0.1
+    port: 8080
+    experiment_name: model_training
+
+train_test_split:
+    test_size: 0.1
+    random_seed: 777
+
+model:
+    group_cols:
+        - item_id
+        - dept_id
+        - cat_id
+        - store_id
+        - state_id
+    time_col: date
+    value_cols: qty_sold
+    lags: 8
+    use_static_covariates: false
+    output_chunk_length: 1
+    horizon: 26
+    name: 'catboost_model.pkl'
+
+inference:
+    output_file: 'sales_forecast.csv'

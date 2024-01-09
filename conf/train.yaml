@@ -1,8 +1,0 @@
-train_test_split:
-    test_size: 0.4
-
-model:
-    lags: 8
-    use_static_covariates: false
-    output_chunk_length: 1
-    horizon: 26

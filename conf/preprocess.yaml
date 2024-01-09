@@ -1,0 +1,13 @@
+filters:
+    state_id: TX
+    dept_id: 1
+    group_cols:
+        - item_id
+        - dept_id
+        - cat_id
+        - store_id
+        - state_id
+
+train_test_split:
+    test_size: 0.25
+    random_seed: 777
