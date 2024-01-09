@@ -1,5 +1,5 @@
 mlflow:
-    host: 127.0.0.1
+    host: 128.0.0.1
     port: 8080
     experiment_name: model_training
 
